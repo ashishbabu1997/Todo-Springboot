@@ -15,4 +15,9 @@ public class TodoController {
      todos.add(new Todo(1,false,"Task1",1));
 
  }
+
+ @GetMapping("/todos")
+ public List<Todo> getTodos(){
+        return todos;
+ }
 }
