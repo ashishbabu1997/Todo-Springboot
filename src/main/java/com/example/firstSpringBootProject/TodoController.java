@@ -1,5 +1,7 @@
 package com.example.firstSpringBootProject;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +21,14 @@ public class TodoController {
  }
 
  @GetMapping("/todos")
- public List<Todo> getTodos(){
-        return todos;
+ public ResponseEntity<List<Todo>> getTodos(){
+        return ResponseEntity.status(HttpStatus.OK).body(todos);
  }
 
  @PostMapping("/todos")
- public Todo createTodo(@RequestBody Todo newTodo){
+ public ResponseEntity<Todo >createTodo(@RequestBody Todo newTodo){
      todos.add(newTodo);
-     return newTodo;
+     return ResponseEntity.status(HttpStatus.CREATED).body(newTodo);
+
  }
 }
